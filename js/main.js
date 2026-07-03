@@ -106,12 +106,15 @@
     gsap.registerPlugin(ScrollTrigger);
     if (lenis) lenis.on('scroll', ScrollTrigger.update);
     window.addEventListener('load', function () { setTimeout(function () { ScrollTrigger.refresh(); }, 300); });
+    if (document.fonts && document.fonts.ready) { document.fonts.ready.then(function () { ScrollTrigger.refresh(); }); }
 
     $$('[data-reveal]').forEach(function (el) {
       gsap.fromTo(el, { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 86%' } });
     });
     $$('[data-reveal-group]').forEach(function (grp) {
-      gsap.fromTo(grp.children, { y: 26, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, stagger: 0.08, ease: 'power2.out', scrollTrigger: { trigger: grp, start: 'top 82%' } });
+      gsap.fromTo(grp.children,
+        { y: 46, opacity: 0, rotationX: -16, z: -60, transformPerspective: 1000, transformOrigin: 'center top' },
+        { y: 0, opacity: 1, rotationX: 0, z: 0, duration: 0.9, stagger: 0.09, ease: 'power3.out', scrollTrigger: { trigger: grp, start: 'top 82%' } });
     });
     titleRise.forEach(function (o) {
       gsap.fromTo(o.el, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: o.el, start: 'top 88%' } });
@@ -188,6 +191,29 @@
       }
       setTimeout(typeLine, 1500);
     }
+  }
+
+  /* ---- 3D tilt tiles (fine pointer only) ---- */
+  if (!reduce && fine) {
+    $$('.card, .step, .book-panel').forEach(function (tile) {
+      var raf = null;
+      tile.addEventListener('pointermove', function (e) {
+        if (raf) return;
+        raf = requestAnimationFrame(function () {
+          raf = null;
+          var r = tile.getBoundingClientRect();
+          var px = (e.clientX - r.left) / r.width - 0.5;
+          var py = (e.clientY - r.top) / r.height - 0.5;
+          tile.style.transform = 'perspective(1000px) rotateX(' + (-py * 8).toFixed(2) + 'deg) rotateY(' + (px * 10).toFixed(2) + 'deg) translateZ(8px)';
+        });
+      });
+      tile.addEventListener('pointerleave', function () {
+        if (raf) { cancelAnimationFrame(raf); raf = null; }
+        tile.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0)';
+        tile.style.transition = 'transform .5s cubic-bezier(0.22,1,0.36,1), border-color .2s, box-shadow .2s';
+        setTimeout(function () { tile.style.transition = ''; }, 520);
+      });
+    });
   }
 
   /* ---- magnetic buttons (fine pointer only) ---- */

@@ -39,6 +39,8 @@
 <div id="cursor" class="cursor" aria-hidden="true"></div>
 <div id="cursor-ring" class="cursor-ring" aria-hidden="true"></div>
 
+<canvas id="world-canvas" class="world-canvas" aria-hidden="true"></canvas>
+
 <header id="nav" class="nav">
   <div class="nav-inner container">
     <a class="nav-logo" href="#top" data-cursor aria-label="Efficient Technologies home">
@@ -56,9 +58,7 @@
 <main id="top">
 
   <section id="hero" class="hero">
-    <canvas id="hero-canvas" class="hero-canvas" aria-hidden="true"></canvas>
     <div class="hero-grid" aria-hidden="true"></div>
-    <div class="hero-glow" aria-hidden="true"></div>
     <span class="side-label side-left" aria-hidden="true">Efficient Technologies — automation studio</span>
     <div class="hero-content container">
       <p class="eyebrow" data-reveal><span class="live-dot"></span> system online &nbsp;//&nbsp; automation for local business <span id="gpu-badge" class="gpu-badge" hidden></span></p>
@@ -80,7 +80,6 @@
   </section>
 
   <section id="core" class="core">
-    <canvas id="core-canvas" class="core-canvas" aria-hidden="true"></canvas>
     <div class="core-labels" aria-hidden="true">
       <span class="mono-label">// the difference</span>
       <span class="mono-label core-index"><span id="core-pct">00</span> / 100</span>
@@ -93,7 +92,6 @@
   </section>
 
   <section id="gaps" class="section">
-    <div class="section-art" aria-hidden="true"><img src="assets/art/gaps.webp" alt="" loading="lazy" decoding="async"></div>
     <div class="container">
       <p class="eyebrow" data-reveal>// 01 — the gaps</p>
       <h2 class="section-title" data-rise>Where local businesses <em class="serif">leak time and leads</em></h2>
@@ -109,7 +107,6 @@
   </section>
 
   <section id="automate" class="section section-alt">
-    <div class="section-art" aria-hidden="true"><img src="assets/art/systems.webp" alt="" loading="lazy" decoding="async"></div>
     <div class="container">
       <p class="eyebrow" data-reveal>// 02 — what we automate</p>
       <h2 class="section-title" data-rise>Systems that <em class="serif">run without you</em></h2>
@@ -125,7 +122,6 @@
   </section>
 
   <section id="how" class="how">
-    <div class="section-art" aria-hidden="true"><img src="assets/art/process.webp" alt="" loading="lazy" decoding="async"></div>
     <div class="how-head container">
       <p class="eyebrow" data-reveal>// 03 — how it works</p>
       <h2 class="section-title" data-rise>Audited, built, and <em class="serif">live in days</em></h2>
@@ -187,7 +183,6 @@
   </section>
 
   <section id="book" class="section book">
-    <div class="section-art" aria-hidden="true"><img src="assets/art/signal.webp" alt="" loading="lazy" decoding="async"></div>
     <div class="container book-inner">
       <p class="eyebrow" data-reveal><span class="live-dot"></span> 06 — book a call</p>
       <h2 class="section-title" data-rise>Find one gap. <em class="serif">We'll close it.</em></h2>
@@ -235,7 +230,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
 <script src="js/main.js" defer></script>
-<script src="js/hero.js" type="module"></script>
-<script src="js/core.js" type="module"></script>
+<script src="js/world.js" type="module"></script>
 </body>
 </html>
