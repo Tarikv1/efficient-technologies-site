@@ -39,7 +39,9 @@
 <div id="cursor" class="cursor" aria-hidden="true"></div>
 <div id="cursor-ring" class="cursor-ring" aria-hidden="true"></div>
 
-<canvas id="world-canvas" class="world-canvas" aria-hidden="true"></canvas>
+<video id="world-video" class="world-video" autoplay muted loop playsinline preload="auto" poster="assets/og.png" aria-hidden="true">
+  <source src="assets/video/hero-loop.mp4" type="video/mp4">
+</video>
 
 <header id="nav" class="nav">
   <div class="nav-inner container">
@@ -216,20 +218,10 @@
   </div>
 </footer>
 
-<script type="importmap">
-{
-  "imports": {
-    "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.webgpu.js",
-    "three/webgpu": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.webgpu.js",
-    "three/tsl": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.tsl.js",
-    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
-  }
-}
-</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
 <script src="js/main.js" defer></script>
-<script src="js/world.js" type="module"></script>
+<script src="js/ambient.js" defer></script>
 </body>
 </html>
