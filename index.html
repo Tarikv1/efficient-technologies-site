@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Efficient Technologies — Find the gaps. Automate them.</title>
+<title>Business Automation for Local Businesses | Efficient Technologies</title>
 <meta name="description" content="Efficient Technologies builds automation for local businesses — booking, follow-up, CRM, and the workflows in between. Audited, built, and live in days.">
 <link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Efficient Technologies — Find the gaps. Automate them.">
 <meta property="og:description" content="Automation for local businesses. We audit the systems you're missing, then build them. Live in days.">
-<meta property="og:image" content="PLACEHOLDER_DOMAIN/assets/og.png">
-<meta property="og:url" content="PLACEHOLDER_DOMAIN">
+<meta property="og:image" content="https://efficientautomate.com/assets/og.png">
+<meta property="og:url" content="https://efficientautomate.com">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="PLACEHOLDER_DOMAIN">
+<link rel="canonical" href="https://efficientautomate.com">
 
 <script>document.documentElement.className="js";</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,6 +21,54 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&family=Inter:wght@400;500;700&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="css/styles.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://efficientautomate.com/#org",
+      "name": "Efficient Technologies",
+      "url": "https://efficientautomate.com",
+      "email": "tarik@efficientautomate.com",
+      "logo": "https://efficientautomate.com/assets/og.png",
+      "description": "Automation studio for local businesses — booking, follow-up, CRM, review management, lead capture, and workflow automation.",
+      "address": { "@type": "PostalAddress", "streetAddress": "30 N Gould St #65748", "addressLocality": "Sheridan", "addressRegion": "WY", "postalCode": "82801", "addressCountry": "US" }
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://efficientautomate.com/#service",
+      "name": "Efficient Technologies",
+      "url": "https://efficientautomate.com",
+      "email": "tarik@efficientautomate.com",
+      "image": "https://efficientautomate.com/assets/og.png",
+      "description": "We audit how a local business runs, find the systems it's missing — online booking, follow-up sequences, lightweight CRM, review management, lead capture, workflow automation — and build them. Audited, built, and live in days.",
+      "priceRange": "$997–$5,000+",
+      "areaServed": { "@type": "Country", "name": "United States" },
+      "parentOrganization": { "@id": "https://efficientautomate.com/#org" },
+      "address": { "@type": "PostalAddress", "streetAddress": "30 N Gould St #65748", "addressLocality": "Sheridan", "addressRegion": "WY", "postalCode": "82801", "addressCountry": "US" },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Automation packages",
+        "itemListElement": [
+          { "@type": "Offer", "name": "Launch", "priceCurrency": "USD", "price": "997", "description": "One automation system, fixed price, live in days." },
+          { "@type": "Offer", "name": "Growth", "priceCurrency": "USD", "price": "1997", "description": "The core stack — booking, follow-up, CRM, reviews, lead capture. $1,997 build plus $497/month." },
+          { "@type": "Offer", "name": "Systems", "description": "Full custom automation, ongoing. Custom pricing." }
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://efficientautomate.com/#website",
+      "url": "https://efficientautomate.com",
+      "name": "Efficient Technologies",
+      "inLanguage": "en-US",
+      "publisher": { "@id": "https://efficientautomate.com/#org" }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -39,12 +87,17 @@
 <div id="cursor" class="cursor" aria-hidden="true"></div>
 <div id="cursor-ring" class="cursor-ring" aria-hidden="true"></div>
 
-<video id="world-video" class="world-video" autoplay muted loop playsinline preload="auto" poster="assets/city-poster.webp" aria-hidden="true">
+<video id="world-video" class="world-video" muted loop playsinline preload="none" poster="assets/city-poster.webp" aria-hidden="true">
   <source src="assets/video/city-loop.mp4" type="video/mp4">
 </video>
-<video id="journey-video" class="world-video journey-video" muted playsinline preload="auto" aria-hidden="true">
-  <source src="assets/video/city-journey.mp4" type="video/mp4">
-</video>
+<div id="chapter-layer" class="chapter-layer" aria-hidden="true">
+  <video id="ch-t1"  class="ch-video" muted playsinline preload="none" src="assets/video/t1.mp4"></video>
+  <video id="ch-t1r" class="ch-video" muted playsinline preload="none" src="assets/video/t1r.mp4"></video>
+  <video id="ch-t2"  class="ch-video" muted playsinline preload="none" src="assets/video/t2.mp4"></video>
+  <video id="ch-t2r" class="ch-video" muted playsinline preload="none" src="assets/video/t2r.mp4"></video>
+  <video id="ch-t3"  class="ch-video" muted playsinline preload="none" src="assets/video/t3.mp4"></video>
+  <video id="ch-t3r" class="ch-video" muted playsinline preload="none" src="assets/video/t3r.mp4"></video>
+</div>
 
 <header id="nav" class="nav">
   <div class="nav-inner container">
@@ -55,6 +108,7 @@
       <a href="#automate" data-cursor>What we automate</a>
       <a href="#how" data-cursor>How it works</a>
       <a href="#pricing" data-cursor>Pricing</a>
+      <a href="/blog/" data-cursor>Blog</a>
       <a class="btn btn-primary btn-sm magnetic" data-cursor href="#book">Book a call</a>
     </nav>
   </div>
@@ -76,12 +130,12 @@
         <a class="btn btn-primary magnetic" data-cursor href="#book">Book a call</a>
         <a class="btn btn-ghost" data-cursor href="#automate">See what we automate</a>
       </div>
-      <div class="terminal" data-reveal role="img" aria-label="Live operations feed with example automation outcomes">
-        <div class="terminal-bar"><span class="tdot"></span><span class="tdot"></span><span class="tdot"></span><span class="tlabel">et — operations feed &nbsp;<em class="tlive">● live</em></span></div>
+      <div class="terminal" data-reveal role="img" aria-label="Example of the automations we build">
+        <div class="terminal-bar"><span class="tdot"></span><span class="tdot"></span><span class="tdot"></span><span class="tlabel">et — what we automate &nbsp;<em class="tlive">demo</em></span></div>
         <div id="term-lines" class="terminal-body"></div>
-        <div class="terminal-foot">appointments <b id="ops-c0">0</b> · reviews <b id="ops-c1">0</b> · leads <b id="ops-c2">0</b> · systems <b id="ops-c3">0</b></div>
+        <div class="terminal-foot">booking · follow-up · reviews · workflows</div>
       </div>
-      <p class="term-caption" data-reveal>every light is a job getting done</p>
+      <p class="term-caption" data-reveal>a preview of the systems we build for you</p>
     </div>
     <a href="#core" class="scroll-cue" data-cursor aria-label="Scroll down">scroll to explore</a>
   </section>
@@ -99,7 +153,6 @@
   </section>
 
   <section id="gaps" class="section">
-    <div class="section-art" aria-hidden="true"><img src="assets/art/street.webp" alt="" loading="lazy" decoding="async"></div>
     <div class="container">
       <p class="eyebrow" data-reveal>// 01 — the gaps</p>
       <h2 class="section-title" data-rise>Where local businesses <em class="serif">leak time and leads</em></h2>
@@ -130,13 +183,12 @@
   </section>
 
   <section id="how" class="how">
-    <div class="section-art" aria-hidden="true"><img src="assets/art/tower.webp" alt="" loading="lazy" decoding="async"></div>
     <div class="how-head container">
       <p class="eyebrow" data-reveal>// 03 — how it works</p>
       <h2 class="section-title" data-rise>Audited, built, and <em class="serif">live in days</em></h2>
     </div>
     <div class="how-viewport">
-      <div id="process-track" class="process-track">
+      <div id="process-track" class="process-track" data-reveal-group>
         <article class="step" data-cursor><span class="step-n">01</span><h3>Audit</h3><p>We scan your business for automation gaps and score each one by what it costs you.</p></article>
         <article class="step" data-cursor><span class="step-n">02</span><h3>Plan</h3><p>You get a fixed scope and a fixed price. Nothing gets built until you approve it.</p></article>
         <article class="step" data-cursor><span class="step-n">03</span><h3>Build</h3><p>We build the systems on the tools you already run. No rip-and-replace.</p></article>
@@ -152,9 +204,31 @@
       <h2 class="section-title" data-rise>Built to <em class="serif">earn trust</em>, not lock you in</h2>
       <div class="stats" data-reveal-group>
         <div class="stat"><div class="stat-num"><span data-count="7" data-suffix="+">0</span></div><div class="stat-label">automation gaps we audit for</div></div>
-        <div class="stat"><div class="stat-num"><span data-count="72" data-suffix="h">0</span></div><div class="stat-label">typical time to live</div></div>
+        <div class="stat"><div class="stat-num"><span data-count="72" data-suffix="h">0</span></div><div class="stat-label">target time to live</div></div>
         <div class="stat"><div class="stat-num"><span data-count="100" data-suffix="%">0</span></div><div class="stat-label">you approve before we build</div></div>
         <div class="stat"><div class="stat-num"><span data-count="0">0</span></div><div class="stat-label">long contracts or lock-in</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" class="section">
+    <div class="container">
+      <p class="eyebrow" data-reveal>// recent work</p>
+      <h2 class="section-title" data-rise>Sites &amp; systems <em class="serif">we've shipped</em></h2>
+      <p class="section-lead" data-reveal>We don't only automate the back office — we design and build the front end too.</p>
+      <div class="work-grid" data-reveal-group>
+        <a class="work-card" href="https://pagecraftory.com" target="_blank" rel="noopener" data-cursor>
+          <div class="work-thumb work-thumb--pc">
+            <span class="work-rings" aria-hidden="true"></span>
+            <span class="work-mark">P&middot;C</span>
+          </div>
+          <div class="work-body">
+            <div class="work-meta">Web design &middot; 3D / immersive</div>
+            <h3 class="work-name">PageCraftory</h3>
+            <p class="work-desc">An immersive, scroll-driven 3D website we designed and built end to end.</p>
+            <span class="work-link">View live &#8599;</span>
+          </div>
+        </a>
       </div>
     </div>
   </section>
@@ -163,11 +237,11 @@
     <div class="container">
       <p class="eyebrow" data-reveal>// 05 — packages</p>
       <h2 class="section-title" data-rise>Productized, <em class="serif">fixed-price</em> to start</h2>
-      <p class="section-lead" data-reveal>Start with one system, or hand us the whole stack. Prices below are placeholders — set your own.</p>
+      <p class="section-lead" data-reveal>Start with one system, or hand us the whole stack. No lock-in — cancel the care plan anytime.</p>
       <div class="pricing" data-reveal-group>
         <div class="card price" data-cursor>
           <h3>Launch</h3>
-          <div class="price-tag">$<span>PLACEHOLDER</span></div>
+          <div class="price-tag">$997 <span>one-time</span></div>
           <p class="price-sub">One system, fixed price.</p>
           <ul><li>Booking or follow-up automation</li><li>Set up on your tools</li><li>Live in days</li><li>2 weeks of tuning</li></ul>
           <a class="btn btn-ghost" data-cursor href="#book">Start here</a>
@@ -175,7 +249,8 @@
         <div class="card price featured" data-cursor>
           <span class="price-badge">Most popular</span>
           <h3>Growth</h3>
-          <div class="price-tag">$<span>PLACEHOLDER</span></div>
+          <div class="price-tag">$1,997 <span>build</span></div>
+          <div class="price-mo"><b>+ $497</b> / mo</div>
           <p class="price-sub">The core stack, done.</p>
           <ul><li>Booking + follow-up + CRM</li><li>Review engine</li><li>Lead capture + routing</li><li>30 days of tuning</li></ul>
           <a class="btn btn-primary magnetic" data-cursor href="#book">Book a call</a>
@@ -188,21 +263,21 @@
           <a class="btn btn-ghost" data-cursor href="#book">Talk to us</a>
         </div>
       </div>
+      <p class="guarantee" data-reveal><span class="live-dot"></span> Works in 30 days, or we rebuild it free.</p>
     </div>
   </section>
 
   <section id="book" class="section book">
-    <div class="section-art" aria-hidden="true"><img src="assets/art/dawn.webp" alt="" loading="lazy" decoding="async"></div>
     <div class="container book-inner">
       <p class="eyebrow" data-reveal><span class="live-dot"></span> 06 — book a call</p>
       <h2 class="section-title" data-rise>Find one gap. <em class="serif">We'll close it.</em></h2>
       <p class="section-lead" data-reveal>Grab 20 minutes. We'll audit one automation gap in your business, live, and show you what it takes to fix.</p>
       <div class="book-panel" data-reveal>
-        <div id="booking-embed" class="booking-embed" data-cal-link="PLACEHOLDER_SCHEDULING_URL">
+        <div id="booking-embed" class="booking-embed" data-cal-link="https://cal.com/efficientautomate">
           <div class="booking-fallback">
             <div class="term-mini"><span class="p">$</span> et book --with founder <span class="cur">&#9646;</span></div>
-            <a class="btn btn-primary magnetic" data-cursor href="PLACEHOLDER_SCHEDULING_URL">Pick a time</a>
-            <p class="muted">or email <a href="mailto:PLACEHOLDER_EMAIL" data-cursor>PLACEHOLDER_EMAIL</a></p>
+            <a class="btn btn-primary magnetic" data-cursor href="https://cal.com/efficientautomate">Pick a time</a>
+            <p class="muted">or email <a href="mailto:tarik@efficientautomate.com" data-cursor>tarik@efficientautomate.com</a></p>
           </div>
         </div>
       </div>
@@ -219,8 +294,8 @@
     </div>
     <div class="footer-meta">
       <p><span class="live-dot"></span> system online</p>
-      <p><a href="mailto:PLACEHOLDER_EMAIL" data-cursor>PLACEHOLDER_EMAIL</a></p>
-      <p class="muted">PLACEHOLDER_ADDRESS</p>
+      <p><a href="mailto:tarik@efficientautomate.com" data-cursor>tarik@efficientautomate.com</a></p>
+      <p class="muted">30 N Gould St #65748, Sheridan, WY 82801, USA</p>
       <p class="muted">&copy; <span id="year">2026</span> Efficient Technologies LLC</p>
     </div>
   </div>
@@ -229,7 +304,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
-<script src="js/main.js" defer></script>
+<script src="js/main.js?v=2" defer></script>
 <script src="js/ambient.js" defer></script>
 </body>
 </html>

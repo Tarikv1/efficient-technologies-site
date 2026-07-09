@@ -120,16 +120,6 @@
       gsap.fromTo(o.el, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: o.el, start: 'top 88%' } });
     });
 
-    var track = $('#process-track');
-    if (track && window.innerWidth >= 820) {
-      var panels = $$('.step', track);
-      if (panels.length > 1) {
-        gsap.to(track, {
-          xPercent: -100 * (panels.length - 1), ease: 'none',
-          scrollTrigger: { trigger: '#how', start: 'top top', end: function () { return '+=' + (track.scrollWidth - window.innerWidth + window.innerWidth * 0.4); }, scrub: 1, pin: true, anticipatePin: 1, invalidateOnRefresh: true }
-        });
-      }
-    }
   } else {
     $$('[data-reveal]').forEach(function (el) { el.style.opacity = 1; });
     $$('[data-reveal-group]').forEach(function (grp) { Array.prototype.slice.call(grp.children).forEach(function (c) { c.style.opacity = 1; }); });
@@ -158,20 +148,20 @@
     $$('[data-count]').forEach(countUp);
   }
 
-  /* ---- live operations feed (example outcomes) ---- */
+  /* ---- automation demo (illustrative capabilities, not client data) ---- */
   var term = $('#term-lines');
   if (term) {
     var OPS = [
-      { t: '✓ appointment set — vela dental', c: 'ok', k: 0 },
-      { t: '✓ review replied — northside barbers', c: 'ok', k: 1 },
-      { t: '✓ follow-up sent — rivera law', c: 'ok', k: 2 },
-      { t: '✓ lead captured — casa tacos', c: 'ok', k: 2 },
-      { t: 'inbound reply — classifying…', c: 'b', k: null },
-      { t: '✓ no-show rescued — atx roofing', c: 'ok', k: 0 },
-      { t: '$ et followup --sequence day-3 --batch 12', c: 'dim', k: null },
-      { t: '✓ 12 follow-ups sent — 3 opens first hour', c: 'ok', k: 2 },
-      { t: 'negative review detected — drafting response', c: 'w', k: null },
-      { t: '✓ new system deployed — lakeview vet', c: 'ok', k: 3 }
+      { t: '✓ missed call → instant text-back', c: 'ok', k: 0 },
+      { t: '✓ new lead captured & routed', c: 'ok', k: 2 },
+      { t: '✓ follow-up sequence fired', c: 'ok', k: 2 },
+      { t: '✓ review request sent automatically', c: 'ok', k: 1 },
+      { t: 'inbound reply — auto-classified', c: 'b', k: null },
+      { t: '✓ no-show → rebooking flow', c: 'ok', k: 0 },
+      { t: '$ et run --booking --followup --reviews', c: 'dim', k: null },
+      { t: '✓ appointment booked — no staff touch', c: 'ok', k: 0 },
+      { t: 'negative review caught → routed private', c: 'w', k: null },
+      { t: '✓ CRM updated automatically', c: 'ok', k: 3 }
     ];
     var opsCount = [0, 0, 0, 0], oi = 0;
     function addOps() {
@@ -189,7 +179,7 @@
     }
     var seed = document.createElement('div');
     seed.className = 'tl dim';
-    seed.textContent = '$ et ops --stream --all-clients';
+    seed.textContent = '$ et demo --show-automations';
     term.appendChild(seed);
     if (reduce) { for (var oz = 0; oz < 5; oz++) addOps(); }
     else { for (var oz2 = 0; oz2 < 3; oz2++) addOps(); setInterval(addOps, 1900); }

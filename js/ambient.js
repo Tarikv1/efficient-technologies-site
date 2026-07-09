@@ -1,18 +1,24 @@
-/* Ambient layer — the fixed background video (the "world") + the pinned
-   #core narrative. No WebGL. Pauses video when the tab is hidden or under
-   prefers-reduced-motion (poster frame stands in). */
+/* Ambient layer — the fixed background video ("world") + the pinned #core
+   narrative. No WebGL. Poster-first: on mobile / data-saver / slow links the
+   heavy loop + chapter clips never load (preload="none" + no autoplay) — the
+   poster frame stands in. Also pauses when the tab is hidden or under
+   prefers-reduced-motion. */
 (function () {
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var conn = navigator.connection || navigator.webkitConnection || navigator.mozConnection || {};
+  var lowPower = window.matchMedia('(max-width: 768px)').matches
+    || conn.saveData === true
+    || /(^|\s)(slow-2g|2g)$/.test(conn.effectiveType || '');
   var video = document.getElementById('world-video');
 
   if (video) {
-    if (reduce) { try { video.pause(); } catch (e) {} }
+    if (reduce || lowPower) { try { video.pause(); } catch (e) {} } // poster stays; nothing downloads
     else {
       video.addEventListener('canplay', function () { document.body.classList.add('video-on'); });
       var p = video.play(); if (p && p.catch) p.catch(function () {});
       document.addEventListener('visibilitychange', function () {
         if (document.hidden) { try { video.pause(); } catch (e) {} }
-        else if (!reduce) { var q = video.play(); if (q && q.catch) q.catch(function () {}); }
+        else { var q = video.play(); if (q && q.catch) q.catch(function () {}); }
       });
     }
   }
@@ -40,32 +46,59 @@
     return;
   }
 
-  /* ---- Active-Theory-style camera journey: scroll scrubs a drone shot ---- */
-  var journey = document.getElementById('journey-video');
-  var jDur = 0, jLast = -1;
-  if (journey) {
-    try { journey.pause(); } catch (e) {}
-    journey.addEventListener('loadedmetadata', function () { jDur = journey.duration || 0; });
-    if (journey.readyState >= 1) jDur = journey.duration || 0;
+  /* ---- cinematic chapter transitions (desktop, full-power only) ----
+     Crossing a section boundary PLAYS a short camera move (natural speed),
+     then holds its final frame as that chapter's backdrop. Upward crossings
+     play the pre-reversed copy. Chapter 0 = the living hero loop. */
+  var chLayer = document.getElementById('chapter-layer');
+  var FWD = [null, 'ch-t1', 'ch-t2', 'ch-t3'].map(function (id) { return id ? document.getElementById(id) : null; });
+  var REV = [null, 'ch-t1r', 'ch-t2r', 'ch-t3r'].map(function (id) { return id ? document.getElementById(id) : null; });
+  var chState = 0, chPlaying = null;
+  if (!lowPower) { [].concat(FWD, REV).forEach(function (v) { if (v) { try { v.load(); } catch (e) {} } }); }
+
+  function showOnly(el) {
+    [].concat(FWD, REV).forEach(function (v) { if (v) v.classList.remove('active'); });
+    if (el) el.classList.add('active');
   }
-  function setJourney(p) {
-    if (!journey || !jDur) return;
-    var t = Math.min(Math.max(p, 0), 0.999) * (jDur - 0.05);
-    if (Math.abs(t - jLast) < 0.03) return;
-    jLast = t;
-    try { journey.currentTime = t; } catch (e) {}
+  function playClip(el, holdEnd, after) {
+    if (!el) { if (after) after(); return; }
+    if (chPlaying && chPlaying !== el) { try { chPlaying.pause(); } catch (e) {} }
+    chPlaying = el;
+    showOnly(el);
+    try { el.currentTime = 0; } catch (e) {}
+    var done = function () {
+      el.removeEventListener('ended', done);
+      try { el.pause(); } catch (e) {}
+      if (!holdEnd) document.body.classList.remove('chapter-on');
+      chPlaying = null;
+      if (after) after();
+    };
+    el.addEventListener('ended', done);
+    document.body.classList.add('chapter-on');
+    var p = el.play(); if (p && p.catch) p.catch(function () { done(); });
+  }
+  function goChapter(target) {
+    if (!chLayer || target === chState) return;
+    if (reduce || lowPower) { chState = target; return; }
+    if (target > chState) {
+      playClip(FWD[target], true);
+    } else {
+      // reverse: play the reversed clip of the boundary we're crossing back over
+      playClip(REV[chState], target > 0, null);
+    }
+    chState = target;
   }
 
   function initST() {
     if (!(window.gsap && window.ScrollTrigger)) { setTimeout(initST, 120); return; }
     gsap.registerPlugin(ScrollTrigger);
-    if (journey) {
-      ScrollTrigger.create({
-        trigger: '#core', endTrigger: '#book', start: 'top 65%', end: 'center center', scrub: true,
-        onUpdate: function (self) { setJourney(self.progress); },
-        onEnter: function () { document.body.classList.add('journey-on'); },
-        onEnterBack: function () { document.body.classList.add('journey-on'); },
-        onLeaveBack: function () { document.body.classList.remove('journey-on'); }
+    if (chLayer && !lowPower) {
+      [{ sel: '#gaps', n: 1 }, { sel: '#how', n: 2 }, { sel: '#book', n: 3 }].forEach(function (c) {
+        ScrollTrigger.create({
+          trigger: c.sel, start: 'top 60%', end: 'bottom 60%',
+          onEnter: function () { goChapter(c.n); },
+          onLeaveBack: function () { goChapter(c.n - 1); }
+        });
       });
     }
     setLines(0);
